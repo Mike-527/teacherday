@@ -1,0 +1,224 @@
+<!-- templates/index.html (翰墨画卷 - 最终·决战版) -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一份给刘老师的礼物</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- 引入思源宋体，增加古典韵味 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 开场动画部分 -->
+    <div id="fireworks-container"></div>
+    <div id="start-overlay">
+        <div class="start-text"><h1>一份特别的礼物</h1><p>请轻触以展卷</p></div>
+    </div>
+    <div id="language-selection-screen" class="hidden">
+        <div class="button-container">
+            <button id="btn-zh">白话篇</button>
+            <button id="btn-en">文言篇</button>
+        </div>
+    </div>
+
+    <!-- 最终内容容器 -->
+    <div id="content-book-wrapper" class="hidden">
+
+        <!-- ================= 白话篇 ================= -->
+        <div id="book-zh" class="book-container hidden">
+
+            <!-- Chapter 1: 扉页 -->
+            <div id="zh-scene-1" class="scene">
+                <div class="page-content">
+                    <h1 class="page-title serif">亲爱的刘老师：</h1>
+                    <p class="page-text">三年的相伴仿佛就在眼前，可转眼，我已是大三学生。回望高中岁月，当时总觉得辛苦，如今才发觉，那竟是一段无比轻松和纯粹的时光。</p>
+                    <p class="page-text">这本小小的画卷，承载着那些不会褪色的记忆。愿您展卷一观。</p>
+                    <p class="page-signature">学生：刘畅 敬上</p>
+                    <div class="navigation">
+                        <button class="nav-button next" data-target="zh-scene-2">展卷 →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 2: 烛光 -->
+            <div id="zh-scene-2" class="scene hidden">
+                <div class="page-content">
+                    <p class="page-number">第一章</p>
+                    <h2 class="page-title">烛光里的我们</h2>
+                    <img class="page-image" src="{{ url_for('static', filename='images/birthday.jpg') }}" alt="生日照">
+                    <blockquote class="page-quote">“一支烛火，三寸讲台，映照出的是您温柔的目光，和我们最炽热的青春。”</blockquote>
+                    <p class="page-text">这张照片，定格了我们为您庆生的瞬间。讲台变成了临时的许愿台，在跳动的烛光里，您双手合十，眼里的笑意比烛光更暖。那一刻，我们不只是师生，更像一个大家庭。</p>
+                    <div class="navigation">
+                        <button class="nav-button prev" data-target="zh-scene-1">← 回扉页</button>
+                        <button class="nav-button next" data-target="zh-scene-3">续章 →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 3: 冠礼 -->
+            <div id="zh-scene-3" class="scene hidden">
+                 <div class="page-content">
+                    <p class="page-number">第二章</p>
+                    <h2 class="page-title">少年冠礼时</h2>
+                    <div class="image-duo">
+                        <img class="page-image" src="{{ url_for('static', filename='images/ceremony1.jpg') }}" alt="成人礼照片1">
+                        <img class="page-image" src="{{ url_for('static', filename='images/ceremony2.jpg') }}" alt="成人礼照片2">
+                    </div>
+                    <blockquote class="page-quote">“您见证我们褪去青涩，一身正装，迈向名为‘成人’的门扉。”</blockquote>
+                    <p class="page-text">成人礼那天，我们穿上西装，努力装出大人的模样，胸口的康乃馨却掩不住青春的朝气。是您陪伴我们走过这重要的时刻，为我们奔赴山海的未来，送上最坚定的注视。</p>
+                    <div class="navigation">
+                        <button class="nav-button prev" data-target="zh-scene-2">← 上一章</button>
+                        <button class="nav-button next" data-target="zh-scene-4">终章 →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 4: 终章致谢 -->
+            <div id="zh-scene-4" class="scene hidden">
+                <div class="page-content page-final-sky">
+                    <div class="stars"></div><div class="stars2"></div><div class="stars3"></div>
+                    <div class="final-art-text" lang="zh-CN">
+                        师恩<br>永怀
+                    </div>
+                    <div class="navigation">
+                        <button class="nav-button prev" data-target="zh-scene-3">← 返回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 文言篇 ================= -->
+        <div id="book-en" class="book-container hidden">
+
+            <!-- Chapter 1: 序 -->
+            <div id="en-scene-1" class="scene">
+                 <div class="page-content">
+                    <h1 class="page-title serif">吾师刘公亲启：</h1>
+                    <p class="page-text">忆昔同窗三载，光景宛若昨日。然倏忽之间，今已同砚大学。顾盼高中之时，常感其苦，今方知其安也，其乐也。</p>
+                    <p class="page-text">寸心之内，感念师恩。特奉此卷，以录旧事，冀望恩师一览。</p>
+                    <p class="page-signature">门生 刘畅 敬呈</p>
+                    <div class="navigation">
+                        <button class="nav-button next" data-target="en-scene-2">展卷 →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 2: 烛影 -->
+            <div id="en-scene-2" class="scene hidden">
+                <div class="page-content">
+                    <p class="page-number">卷一</p>
+                    <h2 class="page-title">堂前烛影暖</h2>
+                    <img class="page-image" src="{{ url_for('static', filename='images/birthday.jpg') }}" alt="生日照">
+                    <blockquote class="page-quote serif">“寸烛微光，三尺讲台，师之温眸，吾辈韶华，皆映其中。”</blockquote>
+                    <p class="page-text">此景乃吾辈为师贺寿之时也。讲台暂为祈愿之所，烛火摇曳，师合掌闭目，其笑意之暖，胜于明烛。是时，情谊甚笃，宛若家人。</p>
+                    <div class="navigation">
+                        <button class="nav-button prev" data-target="en-scene-1">← 归序</button>
+                        <button class="nav-button next" data-target="en-scene-3">续卷 →</button>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Chapter 3: 冠礼 -->
+            <div id="en-scene-3" class="scene hidden">
+                 <div class="page-content">
+                    <p class="page-number">卷二</p>
+                    <h2 class="page-title">及冠之礼成</h2>
+                    <div class="image-duo">
+                        <img class="page-image" src="{{ url_for('static', filename='images/ceremony1.jpg') }}" alt="成人礼照片1">
+                        <img class="page-image" src="{{ url_for('static', filename='images/ceremony2.jpg') }}" alt="成人礼照片2">
+                    </div>
+                    <blockquote class="page-quote serif">“师恩护持，褪尽青涩，衣冠甫正，少年成人。”</blockquote>
+                    <p class="page-text">及冠之日，吾辈皆着正装，状若成人，然胸前之花，难掩少年意气。幸有吾师相伴，送吾辈赴山海之程，其志弥坚。</p>
+                    <div class="navigation">
+                        <button class="nav-button prev" data-target="en-scene-2">← 前卷</button>
+                        <button class="nav-button next" data-target="en-scene-4">终卷 →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 4: 终章致谢 -->
+            <div id="en-scene-4" class="scene hidden">
+                <div class="page-content page-final-sky">
+                    <div class="stars"></div><div class="stars2"></div><div class="stars3"></div>
+                    <div class="final-art-text" lang="zh-CN">
+                        师恩<br>永怀
+                    </div>
+                    <div class="navigation">
+                        <button class="nav-button prev" data-target="en-scene-3">← 返回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 关键改动：从本地加载烟花JS -->
+    <script src="{{ url_for('static', filename='js/fireworks.js') }}"></script>
+
+    <!-- 最终安全版JS -->
+    <script>
+        // --- 获取所有元素 ---
+        const fireworksContainer = document.getElementById('fireworks-container');
+        const startOverlay = document.getElementById('start-overlay');
+        const langScreen = document.getElementById('language-selection-screen');
+        const btnZh = document.getElementById('btn-zh');
+        const btnEn = document.getElementById('btn-en');
+        const contentWrapper = document.getElementById('content-book-wrapper');
+        const bookZh = document.getElementById('book-zh');
+        const bookEn = document.getElementById('book-en');
+
+        // --- 开场动画逻辑 (加了“防弹衣”) ---
+        startOverlay.addEventListener('click', () => {
+            startOverlay.classList.add('fade-out');
+            try {
+                // 现在 Fireworks 这个变量来自我们本地的 fireworks.js 文件，绝对可靠
+                const fireworks = new Fireworks.default(fireworksContainer);
+                fireworks.start();
+            } catch (e) {
+                console.error("烟花效果启动失败:", e);
+            }
+            setTimeout(() => {
+                langScreen.classList.remove('hidden');
+                langScreen.classList.add('fade-in');
+                fireworksContainer.classList.add('fade-out');
+            }, 4000);
+        }, { once: true });
+
+        // --- 语言选择逻辑 ---
+        btnZh.addEventListener('click', () => showBook(bookZh));
+        btnEn.addEventListener('click', () => showBook(bookEn));
+
+        function showBook(bookElement) {
+            langScreen.classList.add('fade-out');
+            setTimeout(() => {
+                langScreen.style.display = 'none';
+                contentWrapper.classList.remove('hidden');
+                bookElement.classList.remove('hidden');
+                contentWrapper.classList.add('fade-in-content');
+            }, 500);
+        }
+
+        // --- 翻页逻辑 ---
+        document.querySelectorAll('.nav-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const currentScene = button.closest('.scene');
+                const targetSceneId = button.dataset.target;
+                const targetScene = document.getElementById(targetSceneId);
+
+                currentScene.classList.add('fade-out-fast');
+                setTimeout(() => {
+                    currentScene.classList.add('hidden');
+                    currentScene.classList.remove('fade-out-fast');
+
+                    targetScene.classList.remove('hidden');
+                    targetScene.classList.add('fade-in-fast');
+                    window.scrollTo(0, 0);
+                }, 400);
+            });
+        });
+    </script>
+</body>
+</html>
